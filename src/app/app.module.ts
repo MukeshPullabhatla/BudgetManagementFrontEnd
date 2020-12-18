@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule } from '@angular/common/http';
-import { FormsModule }   from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
 
-import {Toast, ToastrModule } from 'ngx-toastr';
-import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Toast, ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,9 +27,9 @@ import { ChartsModule } from 'ng2-charts';
 import { DualbarComponent } from './dualbar/dualbar.component';
 import { LineChartComponent } from './linechart/linechart.component';
 import { AddbudgetComponent } from './addbudget/addbudget.component';
-import {AuthguardGuard} from './authguard.guard';
+import { AuthguardGuard } from './authguard.guard';
 import { MaxbudgetchartComponent } from './maxbudgetchart/maxbudgetchart.component';
-
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +51,8 @@ import { MaxbudgetchartComponent } from './maxbudgetchart/maxbudgetchart.compone
     LineChartComponent,
     AddbudgetComponent,
     MaxbudgetchartComponent,
-      ],
+    DashboardComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -63,10 +64,10 @@ import { MaxbudgetchartComponent } from './maxbudgetchart/maxbudgetchart.compone
       timeOut: 3000,
       progressBar: true,
       progressAnimation: 'increasing',
-      preventDuplicates: true
-    })
+      preventDuplicates: true,
+    }),
   ],
-  providers: [DataService,AuthguardGuard],
-  bootstrap: [AppComponent]
+  providers: [DataService, AuthguardGuard],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

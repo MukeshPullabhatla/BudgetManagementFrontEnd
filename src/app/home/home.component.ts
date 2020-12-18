@@ -4,6 +4,7 @@ import { Chart } from 'chart.js';
 import * as D3 from 'd3';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @Component({
   selector: 'app-home',

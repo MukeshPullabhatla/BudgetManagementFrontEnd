@@ -7,53 +7,51 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit {
+  username: string;
+  email: string;
+  description: string;
 
-  username:string;
-  email:string;
-  description:string
+  constructor(
+    private _dataService: DataService,
+    private toastr: ToastrService
+  ) {}
 
+  ngOnInit(): void {}
 
-  constructor(private _dataService: DataService,private toastr: ToastrService) { }
-
-  ngOnInit(): void {
-  }
-
-  getValues(val){
+  getValues(val) {
     console.log(val);
   }
 
-  successfulFeedbackSent(){
-    this.toastr.success('Feedback Sent Successfully','Success');
+  successfulFeedbackSent() {
+    this.toastr.success('Feedback Sent Successfully', 'Success');
   }
 
-  emptyDetails(){
-    this.toastr.warning('Please enter all the fields','Warning');
+  emptyDetails() {
+    this.toastr.warning('Please enter all the fields', 'Warning');
   }
 
-  sendFeedback(){
+  sendFeedback() {
     let record = {};
 
     record['username'] = this.username;
     record['email'] = this.email;
     record['description'] = this.description;
-    if(!this.username || !this.email || !this.email){
+    if (!this.username || !this.email || !this.email) {
       this.emptyDetails();
       return;
-    }else{
-    this._dataService.addFeedbackData(record)
-    .subscribe(data =>{
-      console.log(data);
-      this.username = null;
-      this.email = null;
-      this.description = "";
-      this.successfulFeedbackSent();
-
-    })
+    } else {
+      this._dataService.addFeedbackData(record).subscribe((data) => {
+        console.log(data);
+        this.username = null;
+        this.email = null;
+        this.description = '';
+        this.successfulFeedbackSent();
+      });
+    }
   }
-}
 
   locationreload() {
     location.reload();
