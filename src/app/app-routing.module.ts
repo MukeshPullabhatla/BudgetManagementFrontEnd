@@ -1,33 +1,62 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+import { AboutComponent } from './about/about.component';
+import { AuthguardGuard } from './authguard.guard';
+import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { SeatSelectionComponent } from './seat-selection/seat-selection.component';
-import { LogoutComponent } from './logout/logout.component';
-import {ContactComponent} from './contact/contact.component';
-import { EventsComponent } from './events/events.component';
-import { NewEventComponent } from './new-event/new-event.component';
-import { SavedEventsComponent } from './saved-events/saved-events.component';
-import { EventRegistrationComponent } from './event-registration/event-registration.component';
+import { P404Component } from './p404/p404.component';
+import { SignupComponent } from './signup/signup.component';
 
-
+import { AddbudgetComponent } from './addbudget/addbudget.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
-  { path: 'login', component: LoginComponent },
-  { path: 'events', component: EventsComponent },
-  { path: 'event-registration/:id', component: EventRegistrationComponent },
-  { path: 'saved-events', component: SavedEventsComponent},
-  { path: 'new-event', component: NewEventComponent},
-  { path: 'register', component: RegisterComponent},
-  { path: 'seat-selection', component: SeatSelectionComponent},
-  { path: 'logout', component: LogoutComponent},
-  { path: 'contact', component: ContactComponent}
+  {
+    path: '',
+    component : LoginComponent,
+    pathMatch : 'full'
+  },
+  {
+    path : 'about',
+    component: AboutComponent
+  },
+  {
+    path : 'login',
+    component: LoginComponent,
+  },
+  {
+    path : 'home',
+    component: HomeComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'contact',
+    component : ContactComponent,
+    pathMatch : 'full'
+  },
+  {
+    path: 'signup',
+    component : SignupComponent,
+    pathMatch : 'full'
+  },
+  {
+    path:'logout',
+    component: LoginComponent
+  },
+
+  {
+    path: "addbudget",
+    component: AddbudgetComponent
+  },
+  {
+    path:'**',
+    component: P404Component
+  }
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,59 +1,72 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import {HttpClientModule } from '@angular/common/http';
+import { FormsModule }   from '@angular/forms';
+import { environment } from '../environments/environment';
 
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
+import {Toast, ToastrModule } from 'ngx-toastr';
+import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { DataService } from './services/data.service';
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { MenuComponent } from './menu/menu.component';
+import { HeroComponent } from './hero/hero.component';
+import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import { ArticleComponent } from './article/article.component';
+import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
-import {ReactiveFormsModule} from '@angular/forms';
-import { StorageServiceModule } from 'ngx-webstorage-service';
-import {UserService} from './services/user.service';
-import { RegisterComponent } from './register/register.component';
-import { SeatSelectionComponent } from './seat-selection/seat-selection.component';
-import { LogoutComponent } from './logout/logout.component';
+import { P404Component } from './p404/p404.component';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { ContactComponent } from './contact/contact.component';
-import { DatePipe } from '@angular/common';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { EventsComponent } from './events/events.component';
-import { NewEventComponent } from './new-event/new-event.component';
-import { SavedEventsComponent } from './saved-events/saved-events.component';
-import { EventRegistrationComponent } from './event-registration/event-registration.component';
+import { PieComponent } from './pie/pie.component';
+import { DataService } from './data.service';
+import { SignupComponent } from './signup/signup.component';
+import { HometableComponent } from './hometable/hometable.component';
+import { ChartsModule } from 'ng2-charts';
+import { DualbarComponent } from './dualbar/dualbar.component';
+import { LineChartComponent } from './linechart/linechart.component';
+import { AddbudgetComponent } from './addbudget/addbudget.component';
+import {AuthguardGuard} from './authguard.guard';
+import { MaxbudgetchartComponent } from './maxbudgetchart/maxbudgetchart.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
+    MenuComponent,
+    HeroComponent,
     FooterComponent,
     HomeComponent,
+    ArticleComponent,
+    AboutComponent,
     LoginComponent,
-    RegisterComponent,
-    SeatSelectionComponent,
-    LogoutComponent,
+    P404Component,
+    BreadcrumbsComponent,
     ContactComponent,
-    EventsComponent,
-    NewEventComponent,
-    SavedEventsComponent,
-    EventRegistrationComponent,
-  ],
+    PieComponent,
+    SignupComponent,
+    HometableComponent,
+    DualbarComponent,
+    LineChartComponent,
+    AddbudgetComponent,
+    MaxbudgetchartComponent,
+      ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    StorageServiceModule,
-    NgbModule
+    ChartsModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      progressBar: true,
+      progressAnimation: 'increasing',
+      preventDuplicates: true
+    })
   ],
-  providers: [
-    DataService,
-    UserService,
-    DatePipe
-  ],
+  providers: [DataService,AuthguardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

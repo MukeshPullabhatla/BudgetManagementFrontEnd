@@ -67,14 +67,14 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "Cinco:build:production"
+              "browserTarget": "BudgetManagement:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Cinco:build"
+            "browserTarget": "BudgetManagement:build"
           }
         },
         "test": {
@@ -111,16 +111,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Cinco:serve"
+            "devServerTarget": "BudgetManagement:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Cinco:serve:production"
+              "devServerTarget": "BudgetManagement:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "Cinco Event Management"
+  "defaultProject": "BudgetManagement",
+  "cli": {
+    "analytics": "1c311cad-1fa5-4c59-9b11-fa1ff100a441"
+  }
 }

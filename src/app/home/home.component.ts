@@ -1,16 +1,59 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Chart } from 'chart.js';
+import * as D3 from 'd3';
+import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  title: string;
-  constructor() { }
+  public dataSource = {
+    datasets: [
+      {
+        data: [],
+        backgroundColor: [],
+      },
+    ],
+
+    labels: [],
+  };
+
+  public loggedInUserName: any;
+
+  constructor(private _dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
-    this.title = 'Cinco Event Management';
+    this.loggedInUserName = this._dataService.loggedInUserName;
+    this._dataService
+      .getBudgetData(this.loggedInUserName)
+      .subscribe((res: any) => {
+        console.log(res);
+        for (let i = 0; i < res.length; i++) {
+          this.dataSource.datasets[0].data[i] = res[i].budget;
+          this.dataSource.labels[i] = res[i].title;
+          this.dataSource.datasets[0].backgroundColor[i] = res[i].color;
+          this.createChart();
+        }
+      });
   }
 
+  createChart() {
+    var ctx: any = document.getElementById('myChart');
+    var myPieChart = new Chart(ctx, {
+      type: 'pie',
+      data: this.dataSource,
+    });
+  }
+
+  navigateToAddBudget() {
+    this.router.navigate(['/addbudget']);
+  }
+
+  callNgOnInit() {
+    this.ngOnInit();
+  }
 }
