@@ -88,7 +88,7 @@ export class DataService {
     //return this.http.post('http://localhost:3000/feedback',body,{'headers':headers});
   }
 
-  userSignUp(data: UserSchema) {
+  userRegister(data: UserSchema) {
     const headers = { 'content-type': 'application/json' };
     const body = JSON.stringify(data);
     console.log(body);
@@ -99,7 +99,7 @@ export class DataService {
 
   invaliduser() {
     this.toastr.error(
-      'User does not exist. Please proceed to signup page',
+      'User does not exist. Please proceed to Register page',
       'Error'
     );
   }

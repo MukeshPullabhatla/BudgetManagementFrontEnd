@@ -5,11 +5,11 @@ import { DataService } from '../data.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
 })
-export class SignupComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   username: string;
   password: string;
   email: string;
@@ -87,7 +87,7 @@ export class SignupComponent implements OnInit {
       this.incompleteDetails();
       return;
     } else {
-      this._dataService.userSignUp(record).subscribe(
+      this._dataService.userRegister(record).subscribe(
         (res) => {
           this.username = '';
           this.password = '';

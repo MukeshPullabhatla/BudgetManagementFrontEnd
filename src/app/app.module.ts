@@ -21,7 +21,7 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { ContactComponent } from './contact/contact.component';
 import { PieComponent } from './pie/pie.component';
 import { DataService } from './data.service';
-import { SignupComponent } from './signup/signup.component';
+
 import { HometableComponent } from './hometable/hometable.component';
 import { ChartsModule } from 'ng2-charts';
 import { DualbarComponent } from './dualbar/dualbar.component';
@@ -29,7 +29,7 @@ import { LineChartComponent } from './linechart/linechart.component';
 import { AddbudgetComponent } from './addbudget/addbudget.component';
 import { AuthguardGuard } from './authguard.guard';
 import { MaxbudgetchartComponent } from './maxbudgetchart/maxbudgetchart.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -45,13 +45,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BreadcrumbsComponent,
     ContactComponent,
     PieComponent,
-    SignupComponent,
     HometableComponent,
     DualbarComponent,
     LineChartComponent,
     AddbudgetComponent,
     MaxbudgetchartComponent,
-    DashboardComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
