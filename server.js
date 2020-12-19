@@ -2,7 +2,7 @@ const express = require("express");
 
 const app = express();
 
-app.use(express.static("./dist/BudgetManagementFrontEnd"));
+app.use(express.static("./dist/BudgetManagement"));
 
 app.get("/*", (req, res) => {
   res.sendFile("index.html", { root: "./dist/BudgetManagementFrontEnd/" });
