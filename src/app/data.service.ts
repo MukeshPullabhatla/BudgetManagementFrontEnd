@@ -51,7 +51,7 @@ export class DataService {
       Authorization: `Bearer ${token}`,
     };
     this.DataObservable = this.http
-      .get('http://172.25.160.1:3000/budget', {
+      .get('https://budgetmanagementbackend.herokuapp.com/budget', {
         headers: headers,
         params: { userid: username },
       })
@@ -68,9 +68,13 @@ export class DataService {
     };
     const body = JSON.stringify(data);
     console.log(body);
-    return this.http.post('http://172.25.160.1:3000/budget', body, {
-      headers: headers,
-    });
+    return this.http.post(
+      'https://budgetmanagementbackend.herokuapp.com/budget',
+      body,
+      {
+        headers: headers,
+      }
+    );
     //return this.http.post('http://localhost:3000/budget',body,{'headers':headers});
   }
 
@@ -82,9 +86,13 @@ export class DataService {
     };
     const body = JSON.stringify(data);
     console.log(body);
-    return this.http.post('http://172.25.160.1:3000/feedback', body, {
-      headers: headers,
-    });
+    return this.http.post(
+      'https://budgetmanagementbackend.herokuapp.com/feedback',
+      body,
+      {
+        headers: headers,
+      }
+    );
     //return this.http.post('http://localhost:3000/feedback',body,{'headers':headers});
   }
 
@@ -92,9 +100,13 @@ export class DataService {
     const headers = { 'content-type': 'application/json' };
     const body = JSON.stringify(data);
     console.log(body);
-    return this.http.post('http://172.25.160.1:3000/users', body, {
-      headers: headers,
-    });
+    return this.http.post(
+      'https://budgetmanagementbackend.herokuapp.com/users',
+      body,
+      {
+        headers: headers,
+      }
+    );
   }
 
   invaliduser() {
@@ -109,7 +121,9 @@ export class DataService {
     const body = JSON.stringify(data);
     console.log(body);
     return this.http
-      .post('http://172.25.160.1:3000/auth', body, { headers: headers })
+      .post('https://budgetmanagementbackend.herokuapp.com/auth', body, {
+        headers: headers,
+      })
       .subscribe(
         (res: any) => {
           console.log(res);
